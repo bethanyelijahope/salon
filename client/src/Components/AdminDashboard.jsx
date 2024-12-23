@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { url } from "../../constants";
+// import "react-toastify/dist/ReactToastify.css";
 
 const AdminDashboard = () => {
   const [appointments, setAppointments] = useState([]);
   const [message, setMessage] = useState("");
   const [role, setRole] = useState("");
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchAppointments = async () => {
@@ -21,15 +20,12 @@ const AdminDashboard = () => {
       setRole(decodedToken.role);
 
       try {
-        const response = await fetch(
-          "http://localhost:3002/api/appointment/all",
-          {
-            method: "GET",
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const response = await fetch(`${url}/api/appointment/all`, {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
 
         if (response.ok) {
           const data = await response.json();
@@ -51,7 +47,7 @@ const AdminDashboard = () => {
     const token = localStorage.getItem("token");
     try {
       const response = await fetch(
-        `http://localhost:3002/api/appointment/${id}/cancel/admin`,
+        `${url}/api/appointment/${id}/cancel/admin`,
         {
           method: "POST",
           headers: {
@@ -83,7 +79,7 @@ const AdminDashboard = () => {
     const token = localStorage.getItem("token");
     try {
       const response = await fetch(
-        `http://localhost:3002/api/appointment/${id}/approve/admin`,
+        `${url}/api/appointment/${id}/approve/admin`,
         {
           method: "POST",
           headers: {
@@ -117,7 +113,7 @@ const AdminDashboard = () => {
     const token = localStorage.getItem("token");
     try {
       const response = await fetch(
-        `http://localhost:3002/api/appointment/${id}/completed/admin`,
+        `${url}/api/appointment/${id}/completed/admin`,
         {
           method: "POST",
           headers: {

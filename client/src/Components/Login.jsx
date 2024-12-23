@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { url } from "../../constants";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -14,7 +15,7 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:3002/api/users/login", {
+      const response = await fetch(`${url}/api/users/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

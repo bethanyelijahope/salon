@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { url } from "../../constants";
 
 const ServiceList = () => {
   const [services, setServices] = useState([]);
@@ -11,9 +12,7 @@ const ServiceList = () => {
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:3002/api/service/getAllServices"
-        );
+        const response = await axios.get(`${url}/api/service/getAllServices`);
         setServices(response.data);
         setLoading(false);
       } catch (err) {

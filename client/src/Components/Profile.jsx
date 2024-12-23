@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { url } from "../../constants";
 
 const Profile = () => {
   const [user, setUser] = useState(null);
@@ -12,7 +13,7 @@ const Profile = () => {
   const fetchProfile = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch("http://localhost:3002/api/users/profile", {
+      const response = await fetch(`${url}/api/users/profile`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -35,17 +36,14 @@ const Profile = () => {
   const handleChangeEmail = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(
-        "http://localhost:3002/api/users/profile/email",
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({ email: newEmail }),
-        }
-      );
+      const response = await fetch(`${url}/api/users/profile/email`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ email: newEmail }),
+      });
       if (response.ok) {
         setMessage("Email updated successfully.");
         fetchProfile();
@@ -61,17 +59,14 @@ const Profile = () => {
   const handleChangePassword = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(
-        "http://localhost:3002/api/users/profile/password",
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({ password: newPassword }),
-        }
-      );
+      const response = await fetch(`${url}/api/users/profile/password`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ password: newPassword }),
+      });
       if (response.ok) {
         setMessage("Password updated successfully.");
       } else {

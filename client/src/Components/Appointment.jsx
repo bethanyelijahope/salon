@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { url } from "../../constants";
 
 const Appointment = () => {
   const [appointments, setAppointments] = useState([]);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchAppointments = async () => {
@@ -18,7 +17,7 @@ const Appointment = () => {
       }
 
       try {
-        const response = await fetch("http://localhost:3002/api/appointment", {
+        const response = await fetch(`${url}/api/appointment`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,
@@ -42,24 +41,21 @@ const Appointment = () => {
     fetchAppointments();
   }, []);
 
-  const handleViewServiceDetails = (serviceId) => {
-    navigate(`/services/${serviceId}`);
-  };
+  // const handleViewServiceDetails = (serviceId) => {
+  //   navigate(`/services/${serviceId}`);
+  // };
 
   const handleCancelAppointment = async (id) => {
     const token = localStorage.getItem("token");
 
     try {
-      const response = await fetch(
-        `http://localhost:3002/api/appointment/${id}/cancel`,
-        {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await fetch(`${url}/api/appointment/${id}/cancel`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
 
       if (response.ok) {
         setAppointments((prevAppointments) =>

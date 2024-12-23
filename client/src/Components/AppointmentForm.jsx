@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
+import { url } from "../../constants";
 
 const AppointmentForm = () => {
   const { id } = useParams();
@@ -24,7 +25,7 @@ const AppointmentForm = () => {
     const appointmentTime = new Date(`${serviceDate}T${serviceTime}:00`);
 
     try {
-      const response = await fetch("http://localhost:3002/api/appointment/", {
+      const response = await fetch(`${url}/api/appointment/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
