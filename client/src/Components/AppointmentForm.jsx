@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { url } from "../../constants";
+import { url } from "../constants";
 
 const AppointmentForm = () => {
   const { id } = useParams();

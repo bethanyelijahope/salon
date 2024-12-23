@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { url } from "../../constants";
+import { url } from "../constants";
 
 const ServiceList = () => {
   const [services, setServices] = useState([]);

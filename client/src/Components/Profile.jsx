@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { url } from "../../constants";
+import { url } from "../constants";
 
 const Profile = () => {
   const [user, setUser] = useState(null);

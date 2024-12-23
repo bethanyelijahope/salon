@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { toast, ToastContainer } from "react-toastify";
-import { url } from "../../constants";
+import { url } from "../constants";
 // import "react-toastify/dist/ReactToastify.css";
 
 const AdminDashboard = () => {

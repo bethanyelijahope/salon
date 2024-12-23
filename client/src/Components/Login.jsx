@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { url } from "../../constants";
+import { url } from "../constants";
 
 const Login = () => {
   const [email, setEmail] = useState("");

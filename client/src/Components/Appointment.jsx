@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { url } from "../../constants";
+import { url } from "../constants";
 
 const Appointment = () => {
   const [appointments, setAppointments] = useState([]);
